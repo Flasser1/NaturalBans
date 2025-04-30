@@ -18,10 +18,8 @@ public class FileManager {
     }
 
     public static String getMessage(String path) {
-        return messages.getString(path)
-                .replace("{prefix}", messages.getString("prefix")
-                .replace("&", "§")
-        );
+        String message = messages.getString(path).replace("{prefix}", messages.getString("prefix"));
+        return message.replace("&", "§");
     }
 
     public static void createMessages() {

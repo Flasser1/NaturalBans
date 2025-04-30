@@ -42,13 +42,13 @@ public class UnbanCommand implements CommandExecutor {
 
         String reason;
         if (args[args.length-1].equals("-s")) {
-            reason = getReasonUtil.getReason(args, 1);
+            reason = getReasonUtil.getReason(args, 1, 1);
             staff.sendMessage(FileManager.getMessage("unban_success_silent")
                     .replace("{target}", target.getName())
                     .replace("{player}", staff.getName())
             );
         } else {
-            reason = getReasonUtil.getReason(args, 0);
+            reason = getReasonUtil.getReason(args, 1, 0);
             staff.sendMessage(FileManager.getMessage("unban_success_loud")
                     .replace("{target}", target.getName())
                     .replace("{player}", staff.getName())

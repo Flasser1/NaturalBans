@@ -4,14 +4,14 @@ import java.util.Arrays;
 
 public class getReasonUtil {
 
-    public static String getReason(String[] args, Integer i) {
+    public static String getReason(String[] args, Integer start, Integer end) {
 
-        if (args.length < 2+i) {
+        if (args.length <= start) {
             return "No reason provided";
+        } else {
+            String[] reasonArgs = Arrays.copyOfRange(args, start, args.length - end);
+
+            return String.join(" ", reasonArgs);
         }
-
-        String[] reasonArgs = Arrays.copyOfRange(args, 2, args.length - i);
-
-        return String.join("", reasonArgs);
     }
 }

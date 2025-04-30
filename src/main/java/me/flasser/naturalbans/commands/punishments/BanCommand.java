@@ -51,14 +51,14 @@ public class BanCommand implements CommandExecutor {
 
         String reason;
         if (args[args.length-1].equals("-s")) {
-            reason = getReasonUtil.getReason(args, 1);
+            reason = getReasonUtil.getReason(args, 2,1);
             staff.sendMessage(FileManager.getMessage("ban_success_silent")
                     .replace("{target}", target.getName())
                     .replace("{expires}", (new Date(duration)).toString())
                     .replace("{player}", staff.getName())
             );
         } else {
-            reason = getReasonUtil.getReason(args, 0);
+            reason = getReasonUtil.getReason(args, 2,0);
             staff.sendMessage(FileManager.getMessage("ban_success_loud")
                     .replace("{target}", target.getName())
                     .replace("{expires}", (new Date(duration)).toString())
