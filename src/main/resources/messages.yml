@@ -47,6 +47,9 @@ kick_success_silent: "{prefix}The player &c{target} &fhas been kicked by &c{play
 #{target} - this will return the targeted player
 alts_success: "{prefix}The player {target} has logged in from the same IP as:"
 
+#The message the muted player gets when trying to speak.
+isMuted: "{prefix}You have been muted, and can therefore not speak!"
+
 #The ban screen
 #
 #You can add new lines here, and they will appear on the ban screen.

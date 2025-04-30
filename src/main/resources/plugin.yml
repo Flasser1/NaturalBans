@@ -38,3 +38,15 @@ commands:
     aliases: alt, nalt, nalts
     usage: /alts [<player>]
     description: Gets the targeted player's registered alts.
+
+  #-------------------- CHECKBAN COMMAND SETUP --------------------
+  checkban:
+    aliases: cban, nchackban, ncban
+    usage: /checkban [<player>]
+    description: Gets the targeted player's current ban punishment information.
+
+  #-------------------- CHECKMUTE COMMAND SETUP --------------------
+  chackmute:
+    aliases: cmute, nchackmute, ncmute
+    usage: /chackmute [<player>]
+    description: Gets the targeted player's current mute punishment information.

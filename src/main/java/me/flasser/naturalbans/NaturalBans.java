@@ -31,6 +31,7 @@ public final class NaturalBans extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new ConnectListener(), this);
         getServer().getPluginManager().registerEvents(new JoinListener(), this);
+        getServer().getPluginManager().registerEvents(new ChatListener(), this);
 
         this.getCommand("ban").setExecutor(new BanCommand());
         this.getCommand("kick").setExecutor(new KickCommand());
@@ -38,6 +39,8 @@ public final class NaturalBans extends JavaPlugin {
         this.getCommand("unban").setExecutor(new UnbanCommand());
         this.getCommand("unmute").setExecutor(new UnmuteCommand());
         this.getCommand("alts").setExecutor(new AltsCommand());
+        this.getCommand("checkban").setExecutor(new CheckBanCommand());
+        this.getCommand("checkmute").setExecutor(new CheckMuteCommand());
 
     }
 

@@ -216,6 +216,39 @@ public class PunishmentManager {
         return false;
     }
 
+    public static MuteInfo getMuteInfo(UUID player) {
+        if (!MySQLManager.isConnected()) {
+            return null;
+        }
+
+        String query = "SELECT * FROM Mute WHERE PlayerUUID = ? AND Undone = false AND (Expires = 0 OR Expires > ?)";
+
+        try (PreparedStatement ps = MySQLManager.getConnection().prepareStatement(query)) {
+            ps.setString(1, player.toString());
+            ps.setLong(2, System.currentTimeMillis());
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    MuteInfo mute = new MuteInfo();
+                    mute.reason = rs.getString("Reason");
+                    mute.staffName = Bukkit.getOfflinePlayer(rs.getString("StaffUUID")).getName();
+                    mute.date = rs.getLong("Date");
+                    mute.expires = rs.getLong("Expires");
+                    mute.undone = rs.getBoolean("Undone");
+                    mute.undoneBy = rs.getString("UndoneBy");
+                    mute.undoneReason = rs.getString("UndoneReason");
+                    mute.serverScope = rs.getString("ServerScope");
+                    mute.originServer = rs.getString("OriginServer");
+                    return mute;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
     public static void addKick(UUID player, String reason, UUID staff) {
         if (!MySQLManager.isConnected()) {
             return;
@@ -239,6 +272,18 @@ public class PunishmentManager {
     }
 
     public static class BanInfo {
+        public String reason;
+        public String staffName;
+        public long date;
+        public long expires;
+        public boolean undone;
+        public String undoneBy;
+        public String undoneReason;
+        public String serverScope;
+        public String originServer;
+    }
+
+    public static class MuteInfo {
         public String reason;
         public String staffName;
         public long date;
