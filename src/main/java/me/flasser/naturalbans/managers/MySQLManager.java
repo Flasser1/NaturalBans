@@ -98,7 +98,7 @@ public class MySQLManager {
                     "StaffUUID VARCHAR(36), " +
                     "Reason VARCHAR(255) NOT NULL, " +
                     "Date BIGINT NOT NULL, " +
-                    "Expires BIGINT, " +
+                    "Expires BIGINT NOT NULL, " +
                     "Undone BOOLEAN DEFAULT FALSE, " +
                     "UndoneBy VARCHAR(36), " +
                     "UndoneReason VARCHAR(255), " +

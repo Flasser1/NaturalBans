@@ -11,8 +11,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.util.Date;
-
 public class BanCommand implements CommandExecutor {
 
     @Override
@@ -66,10 +64,9 @@ public class BanCommand implements CommandExecutor {
         }
 
         if (!PunishmentManager.isBanned(target.getUniqueId())) {
-            Bukkit.getServer().broadcastMessage("111 Target: "+target+" Target name: "+target.getName()+" Reason: "+reason+" Duation: "+duration+" Staff: "+staff+" Staff name: "+staff.getName());
             PunishmentManager.addBan(target.getUniqueId(), reason, duration, staff.getUniqueId());
+            target.getPlayer().kickPlayer(reason);
         } else {
-            Bukkit.getServer().broadcastMessage("222 Target: "+target+" Target name: "+target.getName()+" Reason: "+reason+" Duation: "+duration+" Staff: "+staff+" Staff name: "+staff.getName());
             PunishmentManager.overrideBan(target.getUniqueId(), reason, duration, staff.getUniqueId());
         }
 

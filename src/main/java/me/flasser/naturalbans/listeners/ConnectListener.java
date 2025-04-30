@@ -3,7 +3,6 @@ package me.flasser.naturalbans.listeners;
 import me.flasser.naturalbans.managers.PunishmentManager;
 import me.flasser.naturalbans.managers.MySQLManager;
 
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -16,23 +15,25 @@ public class ConnectListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerConnect(AsyncPlayerPreLoginEvent e) {
 
-        String spillerQuery = "INSERT INTO Spiller (UUID, Name) VALUES (?, ?) " +
+        String query = "INSERT INTO Spiller (UUID, Name) VALUES (?, ?) " +
                 "ON DUPLICATE KEY UPDATE Name = VALUES(Name)";
-        try (PreparedStatement ps = MySQLManager.getConnection().prepareStatement(spillerQuery)) {
+        try (PreparedStatement ps = MySQLManager.getConnection().prepareStatement(query)) {
             ps.setString(1, e.getUniqueId().toString());
             ps.setString(2, e.getName());
             ps.executeUpdate();
         } catch (SQLException ex) {
+            System.err.println("Failed to insert/update Spiller: " + ex.getMessage());
             ex.printStackTrace();
         }
 
-        String query = "INSERT INTO Spiller_IPs (PlayerUUID, IP, LastSeen) VALUES (?, ?, NOW()) " +
+        query = "INSERT INTO Spiller_IPs (PlayerUUID, IP, LastSeen) VALUES (?, ?, NOW()) " +
                 "ON DUPLICATE KEY UPDATE LastSeen = NOW();";
         try (PreparedStatement ps = MySQLManager.getConnection().prepareStatement(query)) {
             ps.setString(1, e.getUniqueId().toString());
             ps.setString(2, e.getAddress().getHostAddress());
             ps.executeUpdate();
         } catch (SQLException ex) {
+            System.err.println("Failed to insert/update Spiller_IPs: " + ex.getMessage());
             ex.printStackTrace();
         }
 

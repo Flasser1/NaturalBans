@@ -2,6 +2,7 @@ package me.flasser.naturalbans;
 
 import me.flasser.naturalbans.commands.punishments.*;
 import me.flasser.naturalbans.commands.utils.*;
+import me.flasser.naturalbans.listeners.*;
 import me.flasser.naturalbans.managers.MySQLManager;
 import me.flasser.naturalbans.managers.FileManager;
 
@@ -27,6 +28,9 @@ public final class NaturalBans extends JavaPlugin {
 
         int pluginId = 25176;
         Metrics metrics = new Metrics(this, pluginId);
+
+        getServer().getPluginManager().registerEvents(new ConnectListener(), this);
+        getServer().getPluginManager().registerEvents(new JoinListener(), this);
 
         this.getCommand("ban").setExecutor(new BanCommand());
         this.getCommand("kick").setExecutor(new KickCommand());

@@ -34,8 +34,6 @@ public class PunishmentManager {
             e.printStackTrace();
         }
 
-        Bukkit.getServer().broadcastMessage("Ja 123");
-
     }
 
     public static void overrideBan(UUID player, String reason, Long duration, UUID staff) {
@@ -46,8 +44,6 @@ public class PunishmentManager {
         removeBan(player, staff);
         addBan(player, reason, duration, staff);
     }
-
-    //Lortet her med override og unban skal fixes.
 
     public static void removeBan(UUID player, UUID staff) {
         if (!MySQLManager.isConnected()) {
