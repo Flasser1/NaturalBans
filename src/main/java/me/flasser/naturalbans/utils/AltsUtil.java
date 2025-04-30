@@ -48,7 +48,7 @@ public class AltsUtil {
                     UUID altUUID = UUID.fromString(rs.getString("PlayerUUID"));
                     if (!altUUID.equals(player)) {
                         System.out.println("- " + altUUID);
-                        alts.add(altUUID.toString());
+                        alts.add(UUIDtoNameUtil.getNameFromUUID(altUUID));
                     }
                 }
             }

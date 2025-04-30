@@ -29,14 +29,14 @@ missing_ban: "{prefix}That player has no such active punishment!"
 #{target} - this will return the targeted player
 #{expires} - this will return the duration for the punishment
 #{player} - this will return the executor of the punishment
-ban_success_loud: "{prefix}The player &c{target} &fhas been banned for &c{expires} &fby &c{player}"
+ban_success_loud: "{prefix}The player &c{target} &fhas been banned till &c{expires} &fby &c{player}"
 unban_success_loud: "{prefix}The player &c{target} &fhas been unbanned &fby &c{player}"
-mute_success_loud: "{prefix}The player &c{target} &fhas been muted for &c{expires} &fby &c{player}"
+mute_success_loud: "{prefix}The player &c{target} &fhas been muted till &c{expires} &fby &c{player}"
 unmute_success_loud: "{prefix}The player &c{target} &fhas been unmuted &fby &c{player}"
 kick_success_loud: "{prefix}The player &c{target} &fhas been kicked by &c{player}"
-ban_success_silent: "{prefix}The player &c{target} &fhas been banned for &c{expires} &fby &c{player} &7(silent)"
+ban_success_silent: "{prefix}The player &c{target} &fhas been banned till &c{expires} &fby &c{player} &7(silent)"
 unban_success_silent: "{prefix}The player &c{target} &fhas been unbanned &fby &c{player} &7(silent)"
-mute_success_silent: "{prefix}The player &c{target} &fhas been muted for &c{expires} &fby &c{player} &7(silent)"
+mute_success_silent: "{prefix}The player &c{target} &fhas been muted till &c{expires} &fby &c{player} &7(silent)"
 unmute_success_silent: "{prefix}The player &c{target} &fhas been unmuted &fby &c{player} &7(silent)"
 kick_success_silent: "{prefix}The player &c{target} &fhas been kicked by &c{player} &7(silent)"
 

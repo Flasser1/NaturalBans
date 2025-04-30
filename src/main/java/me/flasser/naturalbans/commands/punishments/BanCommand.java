@@ -1,6 +1,7 @@
 package me.flasser.naturalbans.commands.punishments;
 
 import me.flasser.naturalbans.utils.DurationUtil;
+import me.flasser.naturalbans.utils.getReasonUtil;
 import me.flasser.naturalbans.managers.PunishmentManager;
 import me.flasser.naturalbans.managers.FileManager;
 
@@ -10,6 +11,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import java.util.Date;
 
 public class BanCommand implements CommandExecutor {
 
@@ -48,24 +51,27 @@ public class BanCommand implements CommandExecutor {
 
         String reason;
         if (args[args.length-1].equals("-s")) {
-            reason = toString().substring(2, args.length-1);
+            reason = getReasonUtil.getReason(args, 1);
             staff.sendMessage(FileManager.getMessage("ban_success_silent")
                     .replace("{target}", target.getName())
-                    .replace("{expires}", duration.toString())
+                    .replace("{expires}", (new Date(duration)).toString())
                     .replace("{player}", staff.getName())
             );
         } else {
-            reason = toString().substring(2, args.length);
+            reason = getReasonUtil.getReason(args, 0);
             staff.sendMessage(FileManager.getMessage("ban_success_loud")
                     .replace("{target}", target.getName())
-                    .replace("{expires}", duration.toString())
+                    .replace("{expires}", (new Date(duration)).toString())
                     .replace("{player}", staff.getName())
             );
         }
 
         if (!PunishmentManager.isBanned(target.getUniqueId())) {
             PunishmentManager.addBan(target.getUniqueId(), reason, duration, staff.getUniqueId());
-            target.getPlayer().kickPlayer(reason);
+
+            if (target.isOnline()) {
+                target.getPlayer().kickPlayer(reason);
+            }
         } else {
             PunishmentManager.overrideBan(target.getUniqueId(), reason, duration, staff.getUniqueId());
         }

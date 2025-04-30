@@ -49,11 +49,10 @@ public class ConnectListener implements Listener {
         message.append("§7Reason: §f").append(ban.reason).append("\n");
         message.append("§7Banned by: §f").append(ban.staffName).append("\n");
 
-        if (ban.expires == 0) {
+        if (ban.expires.getTime() == 0) {
             message.append("§7Expires: §cNever\n");
         } else {
-            long remaining = ban.expires - System.currentTimeMillis();
-            message.append("§7Expires: §c").append(remaining).append("\n");
+            message.append("§7Expires: §c").append(ban.expires).append("\n");
         }
 
         message.append("\n§7Appeal at: §fNaturalBans.com");

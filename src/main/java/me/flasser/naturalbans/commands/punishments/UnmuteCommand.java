@@ -3,6 +3,7 @@ package me.flasser.naturalbans.commands.punishments;
 import me.flasser.naturalbans.managers.PunishmentManager;
 import me.flasser.naturalbans.managers.FileManager;
 
+import me.flasser.naturalbans.utils.getReasonUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
@@ -41,13 +42,13 @@ public class UnmuteCommand implements CommandExecutor {
 
         String reason;
         if (args[args.length-1].equals("-s")) {
-            reason = toString().substring(2, args.length-1);
+            reason = getReasonUtil.getReason(args, 1);
             staff.sendMessage(FileManager.getMessage("unmute_success_silent")
                     .replace("{target}", target.getName())
                     .replace("{player}", staff.getName())
             );
         } else {
-            reason = toString().substring(2, args.length);
+            reason = getReasonUtil.getReason(args, 0);
             staff.sendMessage(FileManager.getMessage("unmute_success_loud")
                     .replace("{target}", target.getName())
                     .replace("{player}", staff.getName())

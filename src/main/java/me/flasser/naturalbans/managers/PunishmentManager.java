@@ -1,10 +1,12 @@
 package me.flasser.naturalbans.managers;
 
+import me.flasser.naturalbans.utils.UUIDtoNameUtil;
 import org.bukkit.Bukkit;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.UUID;
 
 public class PunishmentManager {
@@ -112,9 +114,9 @@ public class PunishmentManager {
                 if (rs.next()) {
                     BanInfo ban = new BanInfo();
                     ban.reason = rs.getString("Reason");
-                    ban.staffName = Bukkit.getOfflinePlayer(rs.getString("StaffUUID")).getName();
-                    ban.date = rs.getLong("Date");
-                    ban.expires = rs.getLong("Expires");
+                    ban.staffName = UUIDtoNameUtil.getNameFromUUID(UUID.fromString(rs.getString("StaffUUID")));
+                    ban.date = new Date(rs.getLong("Date"));
+                    ban.expires = new Date(rs.getLong("Expires"));
                     ban.undone = rs.getBoolean("Undone");
                     ban.undoneBy = rs.getString("UndoneBy");
                     ban.undoneReason = rs.getString("UndoneReason");
@@ -231,9 +233,9 @@ public class PunishmentManager {
                 if (rs.next()) {
                     MuteInfo mute = new MuteInfo();
                     mute.reason = rs.getString("Reason");
-                    mute.staffName = Bukkit.getOfflinePlayer(rs.getString("StaffUUID")).getName();
-                    mute.date = rs.getLong("Date");
-                    mute.expires = rs.getLong("Expires");
+                    mute.staffName = UUIDtoNameUtil.getNameFromUUID(UUID.fromString(rs.getString("StaffUUID")));
+                    mute.date = new Date(rs.getLong("Date"));
+                    mute.expires = new Date(rs.getLong("Expires"));
                     mute.undone = rs.getBoolean("Undone");
                     mute.undoneBy = rs.getString("UndoneBy");
                     mute.undoneReason = rs.getString("UndoneReason");
@@ -274,8 +276,8 @@ public class PunishmentManager {
     public static class BanInfo {
         public String reason;
         public String staffName;
-        public long date;
-        public long expires;
+        public Date date;
+        public Date expires;
         public boolean undone;
         public String undoneBy;
         public String undoneReason;
@@ -286,8 +288,8 @@ public class PunishmentManager {
     public static class MuteInfo {
         public String reason;
         public String staffName;
-        public long date;
-        public long expires;
+        public Date date;
+        public Date expires;
         public boolean undone;
         public String undoneBy;
         public String undoneReason;
