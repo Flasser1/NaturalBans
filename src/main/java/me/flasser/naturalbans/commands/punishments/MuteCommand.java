@@ -12,6 +12,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.Date;
+
 public class MuteCommand implements CommandExecutor {
 
     @Override
@@ -52,14 +54,14 @@ public class MuteCommand implements CommandExecutor {
             reason = getReasonUtil.getReason(args, 2,1);
             staff.sendMessage(FileManager.getMessage("mute_success_silent")
                     .replace("{target}", target.getName())
-                    .replace("{expires}", duration.toString())
+                    .replace("{expires}", (new Date(duration)).toString())
                     .replace("{player}", staff.getName())
             );
         } else {
             reason = getReasonUtil.getReason(args, 2,0);
             staff.sendMessage(FileManager.getMessage("mute_success_loud")
                     .replace("{target}", target.getName())
-                    .replace("{expires}", duration.toString())
+                    .replace("{expires}", (new Date(duration)).toString())
                     .replace("{player}", staff.getName())
             );
         }
