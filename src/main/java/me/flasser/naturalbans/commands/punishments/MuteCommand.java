@@ -59,7 +59,7 @@ public class MuteCommand implements CommandExecutor {
             );
         } else {
             reason = getReasonUtil.getReason(args, 2,0);
-            staff.sendMessage(FileManager.getMessage("mute_success_loud")
+            Bukkit.getServer().broadcastMessage(FileManager.getMessage("mute_success_loud")
                     .replace("{target}", target.getName())
                     .replace("{expires}", (new Date(duration)).toString())
                     .replace("{player}", staff.getName())

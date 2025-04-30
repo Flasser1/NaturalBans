@@ -49,7 +49,7 @@ public class UnmuteCommand implements CommandExecutor {
             );
         } else {
             reason = getReasonUtil.getReason(args, 1, 0);
-            staff.sendMessage(FileManager.getMessage("unmute_success_loud")
+            Bukkit.getServer().broadcastMessage(FileManager.getMessage("unmute_success_loud")
                     .replace("{target}", target.getName())
                     .replace("{player}", staff.getName())
             );

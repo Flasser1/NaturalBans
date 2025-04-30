@@ -59,7 +59,7 @@ public class BanCommand implements CommandExecutor {
             );
         } else {
             reason = getReasonUtil.getReason(args, 2,0);
-            staff.sendMessage(FileManager.getMessage("ban_success_loud")
+            Bukkit.getServer().broadcastMessage(FileManager.getMessage("ban_success_loud")
                     .replace("{target}", target.getName())
                     .replace("{expires}", (new Date(duration)).toString())
                     .replace("{player}", staff.getName())
