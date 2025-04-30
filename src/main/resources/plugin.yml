@@ -1,0 +1,40 @@
+name: NaturalBans
+version: '${project.version}'
+main: me.flasser.naturalbans.NaturalBans
+
+commands:
+  #-------------------- BAN COMMAND SETUP --------------------
+  ban:
+    aliases: tempban, ntempban, nban
+    usage: /ban [<player>] [<time>] [<reason>] <-s>
+    description: Bans the targeted player, for the specified duration with the specified reason.
+
+  #-------------------- KICK COMMAND SETUP --------------------
+  kick:
+    aliases: nkick
+    usage: /kick [<player>] [<reason>] <-s>
+    description: Kicks the targeted player, with the specified reason.
+
+  #-------------------- MUTE COMMAND SETUP --------------------
+  mute:
+    aliases: tempmute, ntempmute, nmute
+    usage: /mute [<player>] [<time>] [<reason>] <-s>
+    description: Mutes the targeted player, for the specified duration with the specified reason.
+
+  #-------------------- UNBAN COMMAND SETUP --------------------
+  unban:
+    aliases: nunban
+    usage: /unban [<player>] [<reason>] <-s>
+    description: Unbans the targeted player, with the specified reason.
+
+  #-------------------- UNMUTE COMMAND SETUP --------------------
+  unmute:
+    aliases: nunmute
+    usage: /ban [<player>] [<time>] [<reason>] <-s>
+    description: Unmutes the targeted player, with the specified reason.
+
+  #-------------------- ALTS COMMAND SETUP --------------------
+  alts:
+    aliases: alt, nalt, nalts
+    usage: /alts [<player>]
+    description: Gets the targeted player's registered alts.
