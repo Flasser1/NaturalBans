@@ -46,7 +46,7 @@ commands:
     description: Gets the targeted player's current ban punishment information.
 
   #-------------------- CHECKMUTE COMMAND SETUP --------------------
-  chackmute:
+  checkmute:
     aliases: cmute, nchackmute, ncmute
     usage: /chackmute [<player>]
     description: Gets the targeted player's current mute punishment information.
