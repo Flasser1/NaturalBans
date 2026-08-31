@@ -1,7 +1,10 @@
-package me.flasser.naturalbans.utils;
+package dk.flasser.naturalbans.utils;
+
+import eu.okaeri.platform.core.annotation.Component;
 
 import java.util.Arrays;
 
+@Component
 public class getReasonUtil {
 
     public static String getReason(String[] args, Integer start, Integer end) {

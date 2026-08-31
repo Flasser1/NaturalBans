@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>me.flasser</groupId>
+  <groupId>dk.flasser</groupId>
   <artifactId>NaturalBans</artifactId>
   <version>1.0</version>
   <packaging>jar</packaging>
@@ -41,7 +41,7 @@
               <relocations>
                   <relocation>
                       <pattern>org.bstats</pattern>
-                      <shadedPattern>me.flasser.naturalbans.bstats</shadedPattern>
+                      <shadedPattern>dk.flasser.naturalbans.bstats</shadedPattern>
                   </relocation>
               </relocations>
             </configuration>
@@ -66,6 +66,10 @@
           <id>sonatype</id>
           <url>https://oss.sonatype.org/content/groups/public/</url>
       </repository>
+      <repository>
+          <id>okaeri-repo</id>
+          <url>https://storehouse.okaeri.eu/repository/maven-public/</url>
+      </repository>
   </repositories>
 
   <dependencies>
@@ -80,6 +84,17 @@
           <artifactId>bstats-bukkit</artifactId>
           <version>3.0.2</version>
           <scope>compile</scope>
+      </dependency>
+      <dependency>
+          <groupId>eu.okaeri</groupId>
+          <artifactId>okaeri-platform-bukkit</artifactId>
+          <version>0.4.43</version>
+          <scope>compile</scope>
+      </dependency>
+      <dependency>
+          <groupId>org.xerial</groupId>
+          <artifactId>sqlite-jdbc</artifactId>
+          <version>3.49.1.0</version>
       </dependency>
   </dependencies>
 </project>

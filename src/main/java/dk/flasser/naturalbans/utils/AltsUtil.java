@@ -1,6 +1,9 @@
-package me.flasser.naturalbans.utils;
+package dk.flasser.naturalbans.utils;
 
-import me.flasser.naturalbans.managers.MySQLManager;
+import dk.flasser.naturalbans.managers.SQLManager;
+
+import eu.okaeri.injector.annotation.Inject;
+import eu.okaeri.platform.core.annotation.Component;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,10 +14,13 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
 
+@Component
 public class AltsUtil {
+    private @Inject SQLManager SQLManager;
+    private @Inject UUIDtoNameUtil uuidtoNameUtil;
 
-    public static ArrayList<String> checkAlts(UUID player) {
-        if (!MySQLManager.isConnected()) {
+    public ArrayList<String> checkAlts(UUID player) {
+        if (!SQLManager.isConnected()) {
             return null;
         }
 
@@ -22,7 +28,7 @@ public class AltsUtil {
         Set<String> ips = new HashSet<>();
         ArrayList<String> alts = new ArrayList<>();
 
-        try (PreparedStatement ps = MySQLManager.getConnection().prepareStatement(query)) {
+        try (PreparedStatement ps = SQLManager.getConnection().prepareStatement(query)) {
             ps.setString(1, player.toString());
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
@@ -36,7 +42,7 @@ public class AltsUtil {
         String searchQuery = "SELECT DISTINCT PlayerUUID FROM Spiller_IPs WHERE IP IN (" +
                 String.join(",", Collections.nCopies(ips.size(), "?")) + ")";
 
-        try (PreparedStatement ps = MySQLManager.getConnection().prepareStatement(searchQuery)) {
+        try (PreparedStatement ps = SQLManager.getConnection().prepareStatement(searchQuery)) {
             int i = 1;
             for (String ip : ips) {
                 ps.setString(i++, ip);
@@ -48,7 +54,7 @@ public class AltsUtil {
                     UUID altUUID = UUID.fromString(rs.getString("PlayerUUID"));
                     if (!altUUID.equals(player)) {
                         System.out.println("- " + altUUID);
-                        alts.add(UUIDtoNameUtil.getNameFromUUID(altUUID));
+                        alts.add(uuidtoNameUtil.getNameFromUUID(altUUID));
                     }
                 }
             }

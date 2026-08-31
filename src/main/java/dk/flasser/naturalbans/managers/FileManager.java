@@ -1,32 +1,35 @@
-package me.flasser.naturalbans.managers;
+package dk.flasser.naturalbans.managers;
 
-import me.flasser.naturalbans.NaturalBans;
+import dk.flasser.naturalbans.NaturalBans;
 
+import eu.okaeri.injector.annotation.Inject;
+import eu.okaeri.platform.core.annotation.Component;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
-
+@Component
 public class FileManager {
+    private @Inject NaturalBans naturalBans;
     private static File messagesFile;
     private static FileConfiguration messages;
 
-    public static FileConfiguration getMessages() {
+    public FileConfiguration getMessages() {
         return messages;
     }
 
-    public static String getMessage(String path) {
+    public String getMessage(String path) {
         String message = messages.getString(path).replace("{prefix}", messages.getString("prefix"));
         return message.replace("&", "§");
     }
 
-    public static void createMessages() {
+    public void createMessages() {
 
-        messagesFile = new File(NaturalBans.getInstance().getDataFolder(), "messages.yml");
+        messagesFile = new File(naturalBans.getDataFolder(), "messages.yml");
         if (!messagesFile.exists()) {
-            NaturalBans.getInstance().saveResource("messages.yml", false);
+            naturalBans.saveResource("messages.yml", false);
         }
 
         messages = YamlConfiguration.loadConfiguration(messagesFile);

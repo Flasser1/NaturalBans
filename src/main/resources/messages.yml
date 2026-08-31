@@ -9,17 +9,18 @@
 #{prefix} - this will return the prefix
 
 #This is the prefix
-prefix: "&c&lNatural&f&lBans &8- &f"
+prefix: "&8[ &c&lNatural&f&lBans &8]"
 
 #List of all error messages
-no_permission: "{prefix}You do not have the required permission(s)!"
-missing_player: "{prefix}You need to specify a player!"
-missing_duration: "{prefix}You need to specify a duration!"
-not_joined_before: "{prefix}That player has not joined before!"
-invalid_duration: "{prefix}That is not a valid duration!"
-not_online: "{prefix}That player is not online!"
-missing_mute: "{prefix}That player has no such active punishment!"
-missing_ban: "{prefix}That player has no such active punishment!"
+no_permission: " &fYou do not have the required permission(s)!"
+missing_player: " &fYou need to specify a player!"
+missing_duration: " &fYou need to specify a duration!"
+not_joined_before: " &fThat player has not joined before!"
+invalid_duration: " &fThat is not a valid duration!"
+not_online: " &fThat player is not online!"
+missing_mute: " &fThat player has no such active punishment!"
+missing_ban: " &fThat player has no such active punishment!"
+missing_ipban: " &fThat player has no such active punishment!"
 
 #List of broadcast messages
 #
@@ -29,26 +30,31 @@ missing_ban: "{prefix}That player has no such active punishment!"
 #{target} - this will return the targeted player
 #{expires} - this will return the duration for the punishment
 #{player} - this will return the executor of the punishment
-ban_success_loud: "{prefix}The player &c{target} &fhas been banned till &c{expires} &fby &c{player}"
-unban_success_loud: "{prefix}The player &c{target} &fhas been unbanned &fby &c{player}"
-mute_success_loud: "{prefix}The player &c{target} &fhas been muted till &c{expires} &fby &c{player}"
-unmute_success_loud: "{prefix}The player &c{target} &fhas been unmuted &fby &c{player}"
-kick_success_loud: "{prefix}The player &c{target} &fhas been kicked by &c{player}"
-ban_success_silent: "{prefix}The player &c{target} &fhas been banned till &c{expires} &fby &c{player} &7(silent)"
-unban_success_silent: "{prefix}The player &c{target} &fhas been unbanned &fby &c{player} &7(silent)"
-mute_success_silent: "{prefix}The player &c{target} &fhas been muted till &c{expires} &fby &c{player} &7(silent)"
-unmute_success_silent: "{prefix}The player &c{target} &fhas been unmuted &fby &c{player} &7(silent)"
-kick_success_silent: "{prefix}The player &c{target} &fhas been kicked by &c{player} &7(silent)"
+#{reason} - this will return the reason of the punishment
+ban_success_loud: " &f&fThe player &c{target} &fhas been banned for &c{expires} &fby &c{player} &fwith reason &c{reason}"
+unban_success_loud: " &f&fThe player &c{target} &fhas been unbanned &fby &c{player} &fwith reason &c{reason}"
+banip_success_loud: " &f&fThe player &c{target} &fhas been ipbanned for &c{expires} &fby &c{player} &fwith reason &c{reason}"
+unbanip_success_loud: " &f&fThe player &c{target} &fhas been unipbanned &fby &c{player} &fwith reason &c{reason}"
+mute_success_loud: " &f&fThe player &c{target} &fhas been muted for &c{expires} &fby &c{player} &fwith reason &c{reason}"
+unmute_success_loud: " &f&fThe player &c{target} &fhas been unmuted &fby &c{player} &fwith reason &c{reason}"
+kick_success_loud: " &f&fThe player &c{target} &fhas been kicked by &c{player} &fwith reason &c{reason}"
+ban_success_silent: " &f&fThe player &c{target} &fhas been banned for &c{expires} &fby &c{player} &fwith reason &c{reason} &7(silent)"
+unban_success_silent: " &f&fThe player &c{target} &fhas been unbanned &fby &c{player} &fwith reason &c{reason} &7(silent)"
+banip_success_silent: " &f&fThe player &c{target} &fhas been ipbanned for &c{expires} &fby &c{player} &fwith reason &c{reason} &7(silent)"
+unbanip_success_silent: " &f&fThe player &c{target} &fhas been unipbanned &fby &c{player} &fwith reason &c{reason} &7(silent)"
+mute_success_silent: " &f&fThe player &c{target} &fhas been muted for &c{expires} &fby &c{player} &fwith reason &c{reason} &7(silent)"
+unmute_success_silent: " &f&fThe player &c{target} &fhas been unmuted &fby &c{player} &fwith reason &c{reason} &7(silent)"
+kick_success_silent: " &f&fThe player &c{target} &fhas been kicked by &c{player} &fwith reason &c{reason} &7(silent)"
 
 #List of all command success mesages
 #
 #This list is for all non-broadcast messages that come from a command.
 #
 #{target} - this will return the targeted player
-alts_success: "{prefix}The player {target} has logged in from the same IP as:"
+alts_success: " &fThe player &c{target} &fhas logged in from the same IP as:"
 
 #The message the muted player gets when trying to speak.
-isMuted: "{prefix}You have been muted, and can therefore not speak!"
+isMuted: " &fYou have been muted, and can therefore not speak!"
 
 #The ban screen
 #

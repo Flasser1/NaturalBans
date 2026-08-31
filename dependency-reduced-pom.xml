@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>me.flasser</groupId>
+  <groupId>dk.flasser</groupId>
   <artifactId>NaturalBans</artifactId>
   <name>NaturalBans</name>
   <version>1.0</version>
@@ -34,7 +34,7 @@
               <relocations>
                 <relocation>
                   <pattern>org.bstats</pattern>
-                  <shadedPattern>me.flasser.naturalbans.bstats</shadedPattern>
+                  <shadedPattern>dk.flasser.naturalbans.bstats</shadedPattern>
                 </relocation>
               </relocations>
             </configuration>
@@ -51,6 +51,10 @@
     <repository>
       <id>sonatype</id>
       <url>https://oss.sonatype.org/content/groups/public/</url>
+    </repository>
+    <repository>
+      <id>okaeri-repo</id>
+      <url>https://storehouse.okaeri.eu/repository/maven-public/</url>
     </repository>
   </repositories>
   <dependencies>

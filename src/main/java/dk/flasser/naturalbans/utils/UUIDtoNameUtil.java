@@ -1,20 +1,25 @@
-package me.flasser.naturalbans.utils;
+package dk.flasser.naturalbans.utils;
 
-import me.flasser.naturalbans.managers.MySQLManager;
+import dk.flasser.naturalbans.managers.SQLManager;
+
+import eu.okaeri.injector.annotation.Inject;
+import eu.okaeri.platform.core.annotation.Component;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.UUID;
 
+@Component
 public class UUIDtoNameUtil {
+    private @Inject SQLManager SQLManager;
 
-    public static String getNameFromUUID(UUID player) {
+    public String getNameFromUUID(UUID player) {
 
         String name = "ERROR! Player not found.";
         String query = "SELECT * FROM Spiller WHERE UUID = ?";
 
-        try (PreparedStatement ps = MySQLManager.getConnection().prepareStatement(query)) {
+        try (PreparedStatement ps = SQLManager.getConnection().prepareStatement(query)) {
             ps.setString(1, player.toString());
 
             try (ResultSet rs = ps.executeQuery()) {
